@@ -1,2 +1,1 @@
-All documentation goes here.
-Begin by adding a 'links.txt' file with links to your diary/diaries and a preliminary requirement specification.
+https://docs.google.com/document/d/1Bxm265IPgzUtg7gSlBKgacUvgM4sxU1v3dQE-nB8054/edit
