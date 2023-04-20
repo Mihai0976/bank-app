@@ -6,11 +6,11 @@
   box-sizing: border-box;
 }
 
-body{
+/*body{
   margin: 0;
   background-image: url(../public/image/bank.png);
     background-repeat: no-repeat;
-}
+}*/
 
 .login{
   padding-top: 30px;
@@ -18,7 +18,7 @@ body{
   height: 150px;
   background-color: #3399FF;
   border-radius: 6px;
-  margin: 10% 15% 20% 40%;
+ margin-top: 40px;
 
 }
 
@@ -87,13 +87,17 @@ body{
 }
 
 .container{
-  margin: 1rem;
+  display: flex;
   text-align: center;
+  background-image: url(../public/image/bank.png);
+  background-repeat: no-repeat;
+  justify-content: center;
+  height: 600px;
 }
 
 .footer{
   background-color: rgb(15, 169, 221);
-  margin-top: 595px;
+  
   height: 150px;
   text-align: center;
   align-items: center;
