@@ -8,6 +8,26 @@
 
 body{
   margin: 0;
+  background-image: url(../public/image/bank.png);
+    background-repeat: no-repeat;
+}
+
+.login{
+  padding-top: 30px;
+  width: 350px;
+  height: 150px;
+  background-color: #3399FF;
+  border-radius: 6px;
+  margin: 10% 15% 20% 40%;
+
+}
+
+.loginInput{
+ padding: 30px;
+}
+.img{
+  filter: blur(3px);
+  
 }
 
 .navbar { 
@@ -15,7 +35,7 @@ body{
   height: 80px;
   display: flex;
   align-items: stretch;
-  background-color: rgb(0, 191, 255);
+  background-color: rgb(15, 169, 221);
   gap: 2rem;
   padding: 0 1rem; 
   justify-content: space-between;
@@ -72,7 +92,7 @@ body{
 }
 
 .footer{
-  background-color:rgb(0, 191, 255);
+  background-color: rgb(15, 169, 221);
   margin-top: 595px;
   height: 150px;
   text-align: center;

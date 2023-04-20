@@ -1,5 +1,8 @@
+import React from "react";
+import '../index.css'
 const Home = () => {
- return ( 
+  return ( 
+   
    <h2>Homepage</h2>
   );
 }
