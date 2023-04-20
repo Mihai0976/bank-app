@@ -13,22 +13,64 @@
 }*/
 
 .login{
-  padding-top: 30px;
+  padding-top: 10px;
   width: 350px;
-  height: 150px;
+  height: 180px;
   background-color: #3399FF;
   border-radius: 6px;
- margin-top: 40px;
+  margin-top: 80px;
+ 
+}
+
+
+.login h2{
+  color: rgb(0, 0, 139);
+}
+
+.login-title{
+  color: rgb(0, 0, 139);
+  margin-bottom: 7px;
+  font-weight: bold;
 
 }
 
-.loginInput{
- padding: 30px;
+.title-bank-login{
+  justify-content: center;
+  display: flex;
 }
-.img{
-  filter: blur(3px);
-  
+
+.input-login{
+ margin-bottom: 5px;
+ border-radius: 3px;
+ border-style: none;
+ height: 22px;
 }
+
+.login-btn{
+  margin-top: 5px;
+  border-radius: 4px;
+  border-style: none;
+  background-color: rgb(224, 224, 234);
+  color: rgb(0, 0, 139);;
+  height: 25px;
+  font-weight: 600;
+  width: 100px;
+}
+
+.login-btn:hover{
+  background-color: #2676c6;
+  color: aliceblue;
+}
+
+.new-client-btn{
+  margin-top: 12px;
+  width: 350px;
+  border-radius: 4px;
+  border-style: none;
+  height: 30px;
+  background-color: #3399FF;
+}
+
 
 .navbar { 
   padding-left: 10px;
@@ -92,7 +134,7 @@
   background-image: url(../public/image/bank.png);
   background-repeat: no-repeat;
   justify-content: center;
-  height: 600px;
+  height: 620px;
 }
 
 .footer{
