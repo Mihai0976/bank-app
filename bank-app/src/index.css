@@ -15,7 +15,7 @@
 .login{
   padding-top: 10px;
   width: 350px;
-  height: 180px;
+  height: 210px;
   background-color: #3399FF;
   border-radius: 6px;
   margin-top: 80px;
@@ -55,11 +55,22 @@
   height: 25px;
   font-weight: 600;
   width: 100px;
+  text-align: center;
 }
 
 .login-btn:hover{
   background-color: #2676c6;
   color: aliceblue;
+}
+
+.login-error-message{
+  color: rgb(185, 11, 46);
+  font-size: 13px;
+  font-weight:300;
+  text-align:left;
+  padding-left: 90px;
+  padding-bottom: 5px;
+  visibility: hidden;
 }
 
 .new-client-btn{
@@ -134,7 +145,7 @@
   background-image: url(../public/image/bank.png);
   background-repeat: no-repeat;
   justify-content: center;
-  height: 620px;
+  height: 720px;
 }
 
 .footer{
