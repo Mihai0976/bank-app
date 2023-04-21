@@ -70,7 +70,7 @@
   text-align:left;
   padding-left: 90px;
   padding-bottom: 5px;
-  visibility: hidden;
+  
 }
 
 .new-client-btn{
@@ -82,6 +82,40 @@
   background-color: #3399FF;
 }
 
+.registration-form{
+  margin-top: 40px;
+  height: 600px;
+  width: 500px;
+  padding: 20px;
+  background-color: rgb(223, 229, 234);
+  text-align: left;
+  border-radius: 3px;
+  
+}
+
+.registration-form-input {
+  height: 35px;
+  width: 350px;
+  background-color:rgb(238, 238, 220);
+  margin-bottom: 15px;
+  border-radius: 3px;
+  border-style:groove;
+  
+}
+
+.registration-btn{
+  background-color: #2676c6;
+    color: aliceblue;
+    border-radius: 3px;
+    border-style: none;
+    font-size: 15px;
+    padding: 3px;
+}
+
+.registration-btn:hover{
+  background-color: #14579a;
+  color: aliceblue;
+}
 
 .navbar { 
   padding-left: 10px;
