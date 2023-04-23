@@ -2,7 +2,7 @@ const Registration = () => {
  return ( 
   
   <form className="registration-form" action="">
-   <h3>Registration Form</h3>
+   <h3 style={{paddingBottom: "15px"}}>Registration Form</h3>
    <input className="registration-form-input" placeholder="First Name" /> <p />
    <input className="registration-form-input" placeholder="Last Name" />
    <input className="registration-form-input" placeholder="Age" />

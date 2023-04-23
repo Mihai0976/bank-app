@@ -83,33 +83,35 @@
 }
 
 .registration-form{
-  margin-top: 40px;
+  margin-top: 6.5%;
   height: 600px;
   width: 500px;
-  padding: 20px;
   background-color: rgb(223, 229, 234);
-  text-align: left;
+  text-align: center;
   border-radius: 3px;
-  
+  padding-top: 5%;
 }
 
 .registration-form-input {
   height: 35px;
   width: 350px;
   background-color:rgb(238, 238, 220);
-  margin-bottom: 15px;
+  margin: 10px;
   border-radius: 3px;
   border-style:groove;
   
 }
 
 .registration-btn{
-  background-color: #2676c6;
+    background-color: #2676c6;
     color: aliceblue;
     border-radius: 3px;
     border-style: none;
     font-size: 15px;
     padding: 3px;
+    margin:10px;
+    display:flex;
+    margin-left: 15%;
 }
 
 .registration-btn:hover{
