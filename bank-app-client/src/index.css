@@ -92,14 +92,13 @@
 }
 
 .registration-form{
-  margin-top: 6.5%;
-  margin-bottom: 6.5%;
+margin-top: 2%;
   width: 500px;
   background-color: rgb(223, 229, 234);
   text-align: center;
   border-radius: 3px;
   padding-top: 2%;
-  
+  height: 90%;
 }
 
 .registration-form-input {
