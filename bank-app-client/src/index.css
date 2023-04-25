@@ -114,6 +114,7 @@ margin-top: 2%;
 .registration-form-input:hover{
   background-color: rgb(220, 220, 203);
   font-weight: 1000;
+  font-size: medium;
 }
 
 .registration-btn{
@@ -130,6 +131,7 @@ margin-top: 2%;
 .registration-btn:hover{
   background-color: #14579a;
   color: aliceblue;
+  font-size: 17px;
 }
 
 .navbar { 
