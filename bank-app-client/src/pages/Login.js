@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import validation from "./Validation";
+import validation from './Loginvalidation';
 
 const Login = () => {
   const [values, setValues] = useState({

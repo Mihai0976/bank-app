@@ -1,4 +1,4 @@
-const Validation = (values) => {
+const Loginvalidation = (values) => {
  let errors = {}
  
  if (!values.id) {
@@ -18,4 +18,4 @@ const Validation = (values) => {
  return errors;
 }
  
-export default Validation;
+export default Loginvalidation;

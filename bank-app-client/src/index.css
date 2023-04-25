@@ -73,6 +73,15 @@
   
 }
 
+.registration-error-message {
+  color: rgb(185, 11, 46);
+  font-size: 13px;
+  font-weight: 300;
+  text-align: left;
+  padding-left: 90px;
+
+}
+
 .new-client-btn{
   margin-top: 12px;
   width: 350px;
@@ -84,22 +93,28 @@
 
 .registration-form{
   margin-top: 6.5%;
-  height: 600px;
+  margin-bottom: 6.5%;
   width: 500px;
   background-color: rgb(223, 229, 234);
   text-align: center;
   border-radius: 3px;
-  padding-top: 5%;
+  padding-top: 2%;
+  
 }
 
 .registration-form-input {
   height: 35px;
-  width: 350px;
-  background-color:rgb(238, 238, 220);
-  margin: 10px;
+  width: 80%;
+  background-color:rgb(230, 230, 212);
+  margin: 5px;
   border-radius: 3px;
   border-style:groove;
   
+}
+
+.registration-form-input:hover{
+  background-color: rgb(220, 220, 203);
+  font-weight: 1000;
 }
 
 .registration-btn{
@@ -110,8 +125,7 @@
     font-size: 15px;
     padding: 3px;
     margin:10px;
-    display:flex;
-    margin-left: 15%;
+    width: 80%;
 }
 
 .registration-btn:hover{

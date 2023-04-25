@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 const mysql = require("mysql");
 
 const db = mysql.createConnection({
@@ -10,19 +11,9 @@ const db = mysql.createConnection({
 
 })
 let value = 0;
-app.get("/", (req, res) => {
- value++;
- /*const sqlInsert = "INSERT INTO user (id, password) VALUES ('12345678', '1234')";
- db.query(sqlInsert, (err, result) => {
-  if (er) throw err; 
-  res.send("info created" + value);*/
- db.connect(function (err) {
-  if (err) {
-   console.error('Error connecting! ' + err.stack);
-   return;
-  }
-  console.log('Connected as id' + db.threadId)
- });
+app.post("/api/login", (req, res) => {
+ const sqlInsert = "INSERT INTO userinfo (?, ?, ?, ?, ?, ?,?)";
+ db.query(sqlInsert, (id, firstName, lastName, email, streetaddress, counntry, city, wage) => {});
  })
 
 app.listen(3001, () => {

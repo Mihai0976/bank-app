@@ -1,15 +1,56 @@
+import { useState, useEffect } from "react";
+import validation from './Registervalidation';
+
 const Registration = () => {
- return ( 
+  const [values, setValues] = useState({
+    firstName: '',
+    lastName: '',
+    age: '',
+    stradress: '',
+    email: '',
+    country: '',
+    city: '',
+    wage: ''
+  })
+
+  function handleChange(e) {
+    setValues({...values, [e.target.name]: e.target.value})
+  }
   
-  <form className="registration-form" action="">
-   <h3 style={{paddingBottom: "15px"}}>Registration Form</h3>
-   <input className="registration-form-input" placeholder="First Name" /> <p />
-   <input className="registration-form-input" placeholder="Last Name" />
-   <input className="registration-form-input" placeholder="Age" />
-   <input className="registration-form-input" placeholder="Street Adress" />
-   <input className="registration-form-input" placeholder="E-mail" />
-   <input className="registration-form-input" placeholder="City" />
-   <input className="registration-form-input" placeholder="Monthly Income" /> <p />
+  const [errors, setError] = useState({})  
+  
+  function formCheck(e) {
+    e.preventDefault();
+    setError(validation(values));
+  }
+
+  useEffect((e) => {
+    if (Object.keys(errors).length === 0 && (values.firstName !== "" && values.lastName !== "" && values.age !== "" && values.stradres !== "" && values.email !== "" && values.city !== "" && values.wage !== "")) {
+      
+    }
+  })
+
+ return ( 
+  <form onSubmit={formCheck} formMethod="get" className="registration-form" >
+   <h3 style={{paddingBottom: "7px"}}>Registration Form</h3>
+     <input id="firstName" className="registration-form-input" placeholder="First Name" value={values.firstName} name="firstName" onChange={handleChange} /> <p />
+     {errors.firstName && <p className="registration-error-message" id="id-error">{errors.firstName}</p>}
+    <input id="lastName" className="registration-form-input" placeholder="Last Name" value={values.lastName} name="lastName" onChange={handleChange} /> <p />
+     {errors.lastName && <p className="registration-error-message" id="id-error">{errors.lastName}</p>}
+     <input id="age" name="age" value={values.age} onChange={handleChange} className="registration-form-input" placeholder="Age" />
+     {errors.age && <p className="registration-error-message"  id="id-error">{errors.age}</p>}
+     <input id="stradress" name="stradress" className="registration-form-input" placeholder="Street Address"  onChange={handleChange} value={values.stradress} />
+     {errors.stradress && <p className="registration-error-message"  id="id-error">{errors.stradress}</p>}
+     <input name="email" id="email" className="registration-form-input" placeholder="E-mail" onChange={handleChange} value={values.email} />
+     {errors.email && <p className="registration-error-message"  id="id-error">{errors.email}</p>}
+     <input name="city" id="city" className="registration-form-input" placeholder="City" onChange={handleChange} value={values.city} />
+     {errors.city && <p className="registration-error-message"  id="id-error">{errors.city}</p>}
+     <input name="country" id="country" className="registration-form-input" placeholder="Country"
+       onChange={handleChange} value={values.country} /> 
+     {errors.country && <p className="registration-error-message"  id="id-error">{errors.country}</p>}
+     <input name="wage" id="wage" className="registration-form-input" placeholder="Monthly Income"
+       onChange={handleChange} value={values.wage} /> <p />
+      {errors.wage && <p className="registration-error-message"  id="id-error">{errors.wage}</p>}
    <button className="registration-btn" type={"submit"}>Send Registration Form</button>
   </form>
   );
