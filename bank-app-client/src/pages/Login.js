@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import validation from './Loginvalidation';
-
+import Axios from 'axios' 
 const Login = () => {
   const [values, setValues] = useState({
     id: '',
@@ -36,7 +36,7 @@ const Login = () => {
       <div className="title-bank-login"><h2>Consens</h2><h2 className="h1Bank">Bank</h2></div> 
        
      <p className="login-title"> Log In</p>
-      <form onSubmit={formCheck} formMethod="get" > 
+      <form onSubmit={formCheck} formMethod="post" > 
          <input id="userid" className="input-login" placeholder="User ID" value={values.id} name="id" onChange={handleChange}/> <p />
          {errors.id && <p id="id-error" className="login-error-message">{errors.id}</p>} 
          <input id="password" className="input-login" type="password" placeholder="Password" value={values.password} name="password" onChange={handleChange}/> <p />

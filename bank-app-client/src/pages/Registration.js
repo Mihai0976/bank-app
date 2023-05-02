@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import validation from './Registervalidation';
+import { Axios } from "axios";
 
 const Registration = () => {
   const [values, setValues] = useState({
@@ -16,19 +17,31 @@ const Registration = () => {
   function handleChange(e) {
     setValues({...values, [e.target.name]: e.target.value})
   }
+
+  const submitRegistration = () => {
+    Axios.post("http://localhost:3001/api/register"), {
+      
+    }.then(() => {
+      alert("Wellcome do ConsensBank!");
+    })
+  }
   
   const [errors, setError] = useState({})  
-  
+
   function formCheck(e) {
     e.preventDefault();
     setError(validation(values));
   }
+
+
 
   useEffect((e) => {
     if (Object.keys(errors).length === 0 && (values.firstName !== "" && values.lastName !== "" && values.age !== "" && values.stradres !== "" && values.email !== "" && values.city !== "" && values.wage !== "")) {
       
     }
   })
+
+   
 
  return ( 
   <form onSubmit={formCheck} formMethod="get" className="registration-form" >
@@ -51,7 +64,7 @@ const Registration = () => {
      <input name="wage" id="wage" className="registration-form-input" placeholder="Monthly Income"
        onChange={handleChange} value={values.wage} /> <p />
       {errors.wage && <p className="registration-error-message"  id="id-error">{errors.wage}</p>}
-   <button className="registration-btn" type={"submit"}>Send Registration Form</button>
+   <button className="registration-btn" onClick={submitRegistration} type={"submit"}>Send Registration Form</button>
   </form>
   );
 }
