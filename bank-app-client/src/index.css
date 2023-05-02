@@ -40,6 +40,7 @@
 }
 
 .input-login{
+  margin-top: 3px;
  margin-bottom: 5px;
  border-radius: 3px;
  border-style: none;
@@ -92,13 +93,13 @@
 }
 
 .registration-form{
-margin-top: 2%;
+  margin-top: 2%;
   width: 500px;
   background-color: rgb(223, 229, 234);
   text-align: center;
   border-radius: 3px;
   padding-top: 2%;
-  height: 90%;
+  height: 95%;
 }
 
 .registration-form-input {
@@ -132,6 +133,15 @@ margin-top: 2%;
   background-color: #14579a;
   color: aliceblue;
   font-size: 17px;
+}
+
+.input-login-registration {
+  margin-top: 3px;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  
+  height: 22px;
+  background-color: rgb(230, 230, 212);
 }
 
 .navbar { 

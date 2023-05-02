@@ -11,20 +11,22 @@ const Registration = () => {
     email: '',
     country: '',
     city: '',
-    wage: ''
+    wage: '',
+    id: '',
+    password: ''
   })
 
   function handleChange(e) {
     setValues({...values, [e.target.name]: e.target.value})
   }
 
-  const submitRegistration = () => {
+ /* const submitRegistration = () => {
     Axios.post("http://localhost:3001/api/register"), {
       
     }.then(() => {
       alert("Wellcome do ConsensBank!");
     })
-  }
+  }*/
   
   const [errors, setError] = useState({})  
 
@@ -36,7 +38,7 @@ const Registration = () => {
 
 
   useEffect((e) => {
-    if (Object.keys(errors).length === 0 && (values.firstName !== "" && values.lastName !== "" && values.age !== "" && values.stradres !== "" && values.email !== "" && values.city !== "" && values.wage !== "")) {
+    if (Object.keys(errors).length === 0 && (values.firstName !== "" && values.lastName !== "" && values.age !== "" && values.stradres !== "" && values.email !== "" && values.city !== "" && values.wage !== "" && values.id != "" && values.password != "")) {
       
     }
   })
@@ -63,8 +65,12 @@ const Registration = () => {
      {errors.country && <p className="registration-error-message"  id="id-error">{errors.country}</p>}
      <input name="wage" id="wage" className="registration-form-input" placeholder="Monthly Income"
        onChange={handleChange} value={values.wage} /> <p />
-      {errors.wage && <p className="registration-error-message"  id="id-error">{errors.wage}</p>}
-   <button className="registration-btn" onClick={submitRegistration} type={"submit"}>Send Registration Form</button>
+     {errors.wage && <p className="registration-error-message" id="id-error">{errors.wage}</p>}
+     <input id="userid" className="input-login-registration" placeholder="User ID" value={values.id} name="id" onChange={handleChange}/> <p />
+         {errors.id && <p id="id-error" className="login-error-message">{errors.id}</p>} 
+         <input id="password" className="input-login-registration" type="password" placeholder="Password" value={values.password} name="password" onChange={handleChange}/> 
+         {errors.password && <p className="login-error-message">{errors.password}</p>} 
+   <button className="registration-btn"  type={"submit"}>Send Registration Form</button>
   </form>
   );
 }
