@@ -15,8 +15,8 @@ if (!values.firstName) {
   errors.age = "You must be at least 21 year old!";
  }
  
- if(!values.stradress) {
- errors.stradress = "Street Address required!";
+ if(!values.streetaddress) {
+ errors.streetaddress = "Street Address required!";
  }
 
  if(!values.email) {

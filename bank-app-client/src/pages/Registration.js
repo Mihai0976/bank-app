@@ -7,7 +7,7 @@ const Registration = () => {
     firstName: '',
     lastName: '',
     age: '',
-    stradress: '',
+    streetaddress: '',
     email: '',
     country: '',
     city: '',
@@ -22,7 +22,16 @@ const Registration = () => {
 
  /* const submitRegistration = () => {
     Axios.post("http://localhost:3001/api/register"), {
-      
+    firstName: firstName,
+    lastName: lastName,
+    age: age,
+    streetaddress: streetaddress,
+    email: email,
+    country: country,
+    city: city,
+    wage: wage,
+    id: id,
+    password: password
     }.then(() => {
       alert("Wellcome do ConsensBank!");
     })
@@ -54,7 +63,7 @@ const Registration = () => {
      {errors.lastName && <p className="registration-error-message" id="id-error">{errors.lastName}</p>}
      <input id="age" name="age" value={values.age} onChange={handleChange} className="registration-form-input" placeholder="Age" />
      {errors.age && <p className="registration-error-message"  id="id-error">{errors.age}</p>}
-     <input id="stradress" name="stradress" className="registration-form-input" placeholder="Street Address"  onChange={handleChange} value={values.stradress} />
+     <input id="stradress" name="streetaddress" className="registration-form-input" placeholder="Street Address"  onChange={handleChange} value={values.streetaddress} />
      {errors.stradress && <p className="registration-error-message"  id="id-error">{errors.stradress}</p>}
      <input name="email" id="email" className="registration-form-input" placeholder="E-mail" onChange={handleChange} value={values.email} />
      {errors.email && <p className="registration-error-message"  id="id-error">{errors.email}</p>}
