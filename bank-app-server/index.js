@@ -25,6 +25,7 @@ app.post("/api/register", (req, res) => {
  const country = req.body.country;
  const city = req.body.city;
  const wage = req.body.wage;
+ const password = req.body.password;
 
  const sqlInsert = "INSERT INTO userinfo (id, FirstName, LastName, email, streetaddress, country, city, wage) VALUES (?, ?, ?, ?, ?, ?, ?) INTO user(userId, password) VALUES (?, ?)";
  db.query(sqlInsert, [id, firstName, lastName, email, streetaddress, country, city, wage, password], (err, result) => {
