@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import validation from './Registervalidation';
-import { Axios } from "axios";
+
 
 const Registration = () => {
   const [values, setValues] = useState({
+    id: '',
     firstName: '',
     lastName: '',
     age: '',
@@ -11,31 +12,33 @@ const Registration = () => {
     email: '',
     country: '',
     city: '',
-    wage: '',
-    id: '',
-    password: ''
+    wage: ''
   })
 
+  
   function handleChange(e) {
-    setValues({...values, [e.target.name]: e.target.value})
+    setValues({ ...values, [e.target.name]: e.target.value });
+    
+    
   }
 
- /* const submitRegistration = () => {
-    Axios.post("http://localhost:3001/api/register"), {
-    firstName: firstName,
-    lastName: lastName,
-    age: age,
-    streetaddress: streetaddress,
-    email: email,
-    country: country,
-    city: city,
-    wage: wage,
-    id: id,
-    password: password
-    }.then(() => {
-      alert("Wellcome do ConsensBank!");
+  const submitRegistration = async e => {
+     e.preventDefault();
+    const array = Object.values(values);
+    try {
+    
+      console.log(array);
+    const response = await fetch("http://localhost:3001/api/register", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(array)
+                
     })
-  }*/
+    } catch (err) {
+      console.error(err.message);
+    }
+  
+  }
   
   const [errors, setError] = useState({})  
 
@@ -47,7 +50,7 @@ const Registration = () => {
 
 
   useEffect((e) => {
-    if (Object.keys(errors).length === 0 && (values.firstName !== "" && values.lastName !== "" && values.age !== "" && values.stradres !== "" && values.email !== "" && values.city !== "" && values.wage !== "" && values.id != "" && values.password != "")) {
+    if (Object.keys(errors).length === 0 && (values.id !== "" && values.firstName !== "" && values.lastName !== "" && values.age !== "" && values.stradres !== "" && values.email !== "" && values.city !== "" && values.wage !== "" )) {
       
     }
   })
@@ -55,7 +58,7 @@ const Registration = () => {
    
 
  return ( 
-  <form onSubmit={formCheck} formMethod="get" className="registration-form" >
+  <form onSubmit={formCheck} formMethod="POST" className="registration-form" >
    <h3 style={{paddingBottom: "7px"}}>Registration Form</h3>
      <input id="firstName" className="registration-form-input" placeholder="First Name" value={values.firstName} name="firstName" onChange={handleChange} /> <p />
      {errors.firstName && <p className="registration-error-message" id="id-error">{errors.firstName}</p>}
@@ -76,10 +79,10 @@ const Registration = () => {
        onChange={handleChange} value={values.wage} /> <p />
      {errors.wage && <p className="registration-error-message" id="id-error">{errors.wage}</p>}
      <input id="userid" className="input-login-registration" placeholder="User ID" value={values.id} name="id" onChange={handleChange}/> <p />
-         {errors.id && <p id="id-error" className="login-error-message">{errors.id}</p>} 
-         <input id="password" className="input-login-registration" type="password" placeholder="Password" value={values.password} name="password" onChange={handleChange}/> 
-         {errors.password && <p className="login-error-message">{errors.password}</p>} 
-   <button className="registration-btn"  type={"submit"}>Send Registration Form</button>
+        {/* {errors.id && <p id="id-error" className="login-error-message">{errors.id}</p>} 
+      <input id="password" className="input-login-registration" type="password" placeholder="Password" value={values.password} name="password" onChange={handleChange}
+         {errors.password && <p className="login-error-message">{errors.password}</p>*/} 
+   <button className="registration-btn" onClick={submitRegistration} type={"submit"}>Send Registration Form</button>
   </form>
   );
 }
