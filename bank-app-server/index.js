@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require("cors");
 const mysql = require("mysql");
+const hash = require('object-hash');
 
 const db = mysql.createConnection({
  host: 'localhost',
@@ -14,6 +15,7 @@ db.connect((err) => {
   if (err) throw err;
   console.log("MySql Connected...");
 });
+
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -40,16 +42,25 @@ app.post("/api/register", async (req, res) => {
 
 });
 
-/*app.get("/api/user", async (req, res) => {
- try {
-  const allusers = await db.query("SELECT * FROM consensbank.user");
-  res.json(allusers.rows);
-  //res.send(allusers);
+app.post("/api/login", async (req, res) => {
+  try {
+    const id = req.body.id;
+    var password = req.body.password;
+    const passwordHashed = hash.MD5(password);
+
+   const sqlLogin = "SELECT * FROM consensbank.user WHERE userid = ? AND password = ?";
+    const userLogin = await db.query(sqlLogin, [id, passwordHashed], (err, result) => {
+      console.log(result);
+      console.log("Login succesfull!");
+   })
+ 
  } catch (error) {
    console.error(error.message);
-    res.status(500).json({ message: 'Internal Server Error' });
+   res.json("Login Failed");
  }
-});*/
+});
+
+
 
 
 app.get("/api/user", (req, res) => {
@@ -62,6 +73,16 @@ app.get("/api/user", (req, res) => {
 
     res.send(result);
 
+  });
+
+});
+
+app.get("/api/userinfo", (req, res) => {
+
+  const sql = "SELECT * FROM userinfo";
+
+  db.query(sql, (err, result) => {
+    console.log(result);
   });
 
 });
