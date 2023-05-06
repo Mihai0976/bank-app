@@ -4,34 +4,36 @@ import validation from './Registervalidation';
 
 const Registration = () => {
   const [values, setValues] = useState({
-    id: '',
-    firstName: '',
-    lastName: '',
-    age: '',
+    id: "",
+    firstName: "",
+    lastName: "",
+    age: "",
     streetaddress: '',
-    email: '',
-    country: '',
-    city: '',
-    wage: ''
+    email: "",
+    country: "",
+    city: "",
+    wage: ""
   })
 
   
   function handleChange(e) {
-    setValues({ ...values, [e.target.name]: e.target.value });
-    
-    
+    const newValue ={...values}
+    //setValues({ ...values, [e.target.name]: e.target.value });
+    newValue[e.target.name] = e.target.value
+    setValues(newValue)
+    console.log(newValue)
   }
 
   const submitRegistration = async e => {
      e.preventDefault();
-    const array = Object.values(values);
+    //const array = Object.values(values); 
     try {
     
-      console.log(array);
-    const response = await fetch("http://localhost:3001/api/register", {
+      //console.log(array);
+               const response = await fetch("http://localhost:3001/api/register", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(array)
+                body: JSON.stringify(values)
                 
     })
     } catch (err) {
