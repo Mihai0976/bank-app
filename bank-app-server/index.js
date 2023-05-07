@@ -31,13 +31,26 @@ app.post("/api/register", async (req, res) => {
   const city = req.body.city;
   const wage = req.body.wage;
  // const password = req.body.password;
-  console.log(id);
-  const sqlInsert = "INSERT INTO userinfo (id, firstName, lastName, email, streetaddress, country, city, wage) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-  const userinfo = await db.query(sqlInsert, [id, firstName, lastName, email, streetaddress, country, city, wage], (err, result) => {
-   console.log(result);
+ // const sqlInsert = "INSERT INTO userinfo (id, firstName, lastName, email, streetaddress, country, city, wage) VALUES (?, ?, ?, ?, ?, ?, ?, ?) WHERE id = ?";
+  const sqlInsert = `
+  INSERT INTO userinfo
+    (infoid, id, firstName, lastName, email, streetaddress, country, city, wage)
+  SELECT u.id, ?, ?, ?, ?, ?, ?, ?, ?
+  FROM user u, user info
+  WHERE u.userid = ?;
+`;
+   db.query(sqlInsert, [id, firstName, lastName, email, streetaddress, country, city, wage], (err, result) => {
+     if (err) {
+       console.error(err.message);
+      es.status(500).json("An error occurred");
+     } else {
+       console.log(result);
+       res.status(200).json("Registration successful");
+    }
   });
  } catch (error) {
-  console.error(error.message);
+   console.error(error.message);
+   res.status(500).json("An error occurred while processing the request");
  }
 
 });
