@@ -61,29 +61,30 @@ app.post("/api/register", async (req, res) => {
 app.post("/api/login", async (req, res) => {
   try {
     const id = req.body.id;
-    var password = req.body.password;
+    const password = req.body.password;
     const passwordHashed = hash.MD5(password);
 
-   const sqlLogin = "SELECT * FROM user,  WHERE userid = ? AND password = ?";
+    const sqlLogin = "SELECT userid, password FROM user WHERE userid = ? AND password = ?";
     const userLogin = await db.query(sqlLogin, [id, passwordHashed], (err, result) => {
-      console.log(result);
-      
-      if (!result=="") {
-        console.log("Login succesfull!");
-
-        //sqlloan = "SELECT * FROM loan WHERE userid =' " + id + "'";
-
-        res.send(result);
+      if (err) {
+        console.error(err.message);
+        res.json("Login Failed");
+      } else {
+        if (result.length !== 0) {
+          console.log("Login successful!");
+          res.send(result);
+        } else {
+          console.log("Login failed!");
+          res.json("Login Failed");
+        }
       }
-     
-      
-   })
- 
- } catch (error) {
-   console.error(error.message);
-   res.json("Login Failed");
- }
+    });
+  } catch (error) {
+    console.error(error.message);
+    res.json("Login Failed");
+  }
 });
+
 
 
 

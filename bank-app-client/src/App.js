@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Footer from './Footer';
 import Registration from './pages/Registration';
 import { Route, Routes } from 'react-router-dom';
+import Useracount from './pages/Useracount';
 function App() {
   return (
     
@@ -16,6 +17,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path='/newUser' element={<Registration />} />
+           <Route path='/userInfo' element={<Useracount />} />
         </Routes>
       </div>
       <div className='footer'>

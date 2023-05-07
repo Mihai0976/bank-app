@@ -60,7 +60,7 @@ const Login = () => {
          {errors.id && <p id="id-error" className="login-error-message">{errors.id}</p>} 
          <input id="password" className="input-login" type="password" placeholder="Password" value={values.password} name="password" onChange={handleChange}/> <p />
          {errors.password && <p className="login-error-message">{errors.password}</p>} 
-        <input className="login-btn" type={"submit"} onClick={submitRegistration} value={"Login"}/>
+        <button className="login-btn" type={"submit"} onClick={submitRegistration} value={"Login"}><a href="./userInfo"></a>Login</button>
      </form>
      </div>
      <button className="new-client-btn">New to us? <a href="./newUser">Create new acount</a> </button>
