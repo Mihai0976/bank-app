@@ -32,16 +32,18 @@ app.post("/api/register", async (req, res) => {
   const wage = req.body.wage;
  // const password = req.body.password;
  // const sqlInsert = "INSERT INTO userinfo (id, firstName, lastName, email, streetaddress, country, city, wage) VALUES (?, ?, ?, ?, ?, ?, ?, ?) WHERE id = ?";
-  const sqlInsert = `
+ const sqlInsert = `
   INSERT INTO userinfo
-    (infoid, id, firstName, lastName, email, streetaddress, country, city, wage)
-  SELECT u.id, ?, ?, ?, ?, ?, ?, ?, ?
-  FROM user u, user info
+    (id, firstName, lastName, email, streetaddress, country, city, wage)
+  SELECT u.id, ?, ?, ?, ?, ?, ?, ?
+  FROM user u
   WHERE u.userid = ?;
 `;
+
+   console.log(sqlInsert);
    db.query(sqlInsert, [id, firstName, lastName, email, streetaddress, country, city, wage], (err, result) => {
      if (err) {
-       console.error(err.message);
+       console.error(err.stack);
       es.status(500).json("An error occurred");
      } else {
        console.log(result);
