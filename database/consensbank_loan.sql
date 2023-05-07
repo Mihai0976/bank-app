@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `consensbank` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `consensbank`;
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
 -- Host: localhost    Database: consensbank
@@ -16,30 +18,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `loans`
+-- Table structure for table `loan`
 --
 
-DROP TABLE IF EXISTS `loans`;
+DROP TABLE IF EXISTS `loan`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `loans` (
-  `idloans` int NOT NULL,
-  `id` int NOT NULL,
-  `loanammount` varchar(45) NOT NULL,
-  PRIMARY KEY (`idloans`),
-  UNIQUE KEY `idloans_UNIQUE` (`idloans`),
-  UNIQUE KEY `id_UNIQUE` (`id`),
-  CONSTRAINT `loan_user` FOREIGN KEY (`id`) REFERENCES `user` (`id`) ON UPDATE CASCADE
+CREATE TABLE `loan` (
+  `loanid` int NOT NULL AUTO_INCREMENT,
+  `userid` int NOT NULL,
+  `loanamount` varchar(45) NOT NULL,
+  PRIMARY KEY (`loanid`),
+  UNIQUE KEY `loanid_UNIQUE` (`loanid`),
+  UNIQUE KEY `userid_UNIQUE` (`userid`),
+  CONSTRAINT `userid_foreignkey` FOREIGN KEY (`userid`) REFERENCES `user` (`useid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `loans`
+-- Dumping data for table `loan`
 --
 
-LOCK TABLES `loans` WRITE;
-/*!40000 ALTER TABLE `loans` DISABLE KEYS */;
-/*!40000 ALTER TABLE `loans` ENABLE KEYS */;
+LOCK TABLES `loan` WRITE;
+/*!40000 ALTER TABLE `loan` DISABLE KEYS */;
+/*!40000 ALTER TABLE `loan` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-23 22:38:26
+-- Dump completed on 2023-05-07 16:39:03

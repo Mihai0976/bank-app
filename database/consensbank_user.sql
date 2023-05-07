@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `consensbank` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `consensbank`;
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
 -- Host: localhost    Database: consensbank
@@ -23,11 +25,17 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `id` int NOT NULL,
-  `password` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `password_UNIQUE` (`password`),
-  UNIQUE KEY `id_UNIQUE` (`id`)
+  `userid` int NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `firstName` varchar(45) NOT NULL,
+  `lastName` varchar(45) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `streetaddress` varchar(100) NOT NULL,
+  `country` varchar(45) NOT NULL,
+  `city` varchar(45) NOT NULL,
+  `wage` varchar(45) NOT NULL,
+  PRIMARY KEY (`useid`),
+  UNIQUE KEY `iduser_UNIQUE` (`useid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -49,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-23 22:38:26
+-- Dump completed on 2023-05-07 16:39:03

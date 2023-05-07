@@ -5,6 +5,7 @@ import validation from './Registervalidation';
 const Registration = () => {
   const [values, setValues] = useState({
     id: "",
+    password: "",
     firstName: "",
     lastName: "",
     age: "",
@@ -28,12 +29,12 @@ const Registration = () => {
      e.preventDefault();
     //const array = Object.values(values); 
     try {
-    
+               
                const response = await fetch("http://localhost:3001/api/register", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(values)
-                
+                          
     })
     } catch (err) {
       console.error(err.message);
@@ -51,7 +52,7 @@ const Registration = () => {
 
 
   useEffect((e) => {
-    if (Object.keys(errors).length === 0 && (values.id !== "" && values.firstName !== "" && values.lastName !== "" && values.age !== "" && values.stradres !== "" && values.email !== "" && values.city !== "" && values.wage !== "" )) {
+    if (Object.keys(errors).length === 0 && (values.id !== "" && values.firstName !== "" && values.lastName !== "" && values.age !== "" && values.stradres !== "" && values.email !== "" && values.city !== "" && values.wage !== "" && values.password !== "")) {
       
     }
   })
@@ -81,8 +82,8 @@ const Registration = () => {
      {errors.wage && <p className="registration-error-message" id="id-error">{errors.wage}</p>}
      <input id="userid" className="input-login-registration" placeholder="User ID" value={values.id} name="id" onChange={handleChange}/> <p />
          {errors.id && <p id="id-error" className="login-error-message">{errors.id}</p>} 
-     {/* <input id="password" className="input-login-registration" type="password" placeholder="Password" value={values.password} name="password" onChange={handleChange}
-         {errors.password && <p className="login-error-message">{errors.password}</p>*/} 
+      <input id="password" className="input-login-registration" type="password" placeholder="Password" value={values.password} name="password" onChange={handleChange}/> <p />
+       {errors.password && <p id="id-password" className="login-error-message">{errors.password}</p>}   
    <button className="registration-btn" onClick={submitRegistration} type={"submit"}>Send Registration Form</button>
   </form>
   );

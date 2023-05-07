@@ -30,18 +30,19 @@ app.post("/api/register", async (req, res) => {
   const country = req.body.country;
   const city = req.body.city;
   const wage = req.body.wage;
- // const password = req.body.password;
- // const sqlInsert = "INSERT INTO userinfo (id, firstName, lastName, email, streetaddress, country, city, wage) VALUES (?, ?, ?, ?, ?, ?, ?, ?) WHERE id = ?";
- const sqlInsert = `
+   const password = req.body.password;
+   const hashPassword = hash.MD5(password)
+  const sqlInsert = "INSERT INTO user (userid, password, firstName, lastName, email, streetaddress, country, city, wage)  VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+ /*const sqlInsert = `
   INSERT INTO userinfo
-    (id, firstName, lastName, email, streetaddress, country, city, wage)
-  SELECT u.id, ?, ?, ?, ?, ?, ?, ?
+    (userid, firstName, lastName, email, streetaddress, country, city, wage)
+  SELECT u.id, ?, ?, ?, ?, ?, ?, ?, ?
   FROM user u
-  WHERE u.userid = ?;
-`;
+  WHERE u.userid = ?
+`;*/
 
-   console.log(sqlInsert);
-   db.query(sqlInsert, [id, firstName, lastName, email, streetaddress, country, city, wage], (err, result) => {
+   //console.log(sqlInsert);
+   db.query(sqlInsert, [id, hashPassword, firstName, lastName, email, streetaddress, country, city, wage], (err, result) => {
      if (err) {
        console.error(err.stack);
       es.status(500).json("An error occurred");
@@ -63,10 +64,19 @@ app.post("/api/login", async (req, res) => {
     var password = req.body.password;
     const passwordHashed = hash.MD5(password);
 
-   const sqlLogin = "SELECT * FROM consensbank.user WHERE userid = ? AND password = ?";
+   const sqlLogin = "SELECT * FROM user,  WHERE userid = ? AND password = ?";
     const userLogin = await db.query(sqlLogin, [id, passwordHashed], (err, result) => {
       console.log(result);
-      console.log("Login succesfull!");
+      
+      if (!result=="") {
+        console.log("Login succesfull!");
+
+        //sqlloan = "SELECT * FROM loan WHERE userid =' " + id + "'";
+
+        res.send(result);
+      }
+     
+      
    })
  
  } catch (error) {
@@ -92,15 +102,7 @@ app.get("/api/user", (req, res) => {
 
 });
 
-app.get("/api/userinfo", (req, res) => {
 
-  const sql = "SELECT * FROM userinfo";
-
-  db.query(sql, (err, result) => {
-    console.log(result);
-  });
-
-});
 
 app.listen(3001, () => {
  console.log("Running on port 3001");

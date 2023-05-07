@@ -41,13 +41,13 @@ if (!values.firstName) {
   errors.id = "User ID required !"
  }
  
-/*
+
   if (!values.password) {
   errors.password = "Password required !"
  }
  else if (values.password.length !== 4) {
   errors.password = "The Password must be composed by 4 char!"
- }*/
+ }
 
  return errors;
 }
