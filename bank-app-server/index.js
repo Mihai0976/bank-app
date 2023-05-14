@@ -27,19 +27,12 @@ app.post("/api/register", async (req, res) => {
   const lastName = req.body.lastName;
   const email = req.body.email;
   const streetaddress = req.body.streetaddress;
-  const country = req.body.country;
   const city = req.body.city;
+  const country = req.body.country;
   const wage = req.body.wage;
-   const password = req.body.password;
-   const hashPassword = hash.MD5(password)
+  const password = req.body.password;
+  const hashPassword = hash.MD5(password)
   const sqlInsert = "INSERT INTO user (userid, password, firstName, lastName, email, streetaddress, country, city, wage)  VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
- /*const sqlInsert = `
-  INSERT INTO userinfo
-    (userid, firstName, lastName, email, streetaddress, country, city, wage)
-  SELECT u.id, ?, ?, ?, ?, ?, ?, ?, ?
-  FROM user u
-  WHERE u.userid = ?
-`;*/
 
    //console.log(sqlInsert);
    db.query(sqlInsert, [id, hashPassword, firstName, lastName, email, streetaddress, country, city, wage], (err, result) => {
@@ -63,7 +56,7 @@ app.post("/api/login", async (req, res) => {
     const id = req.body.id;
     const password = req.body.password;
     const passwordHashed = hash.MD5(password);
-
+    console.log("Hashed Password:", passwordHashed); // Log the hashed password
     const sqlLogin = "SELECT userid, password FROM user WHERE userid = ? AND password = ?";
     const userLogin = await db.query(sqlLogin, [id, passwordHashed], (err, result) => {
       if (err) {

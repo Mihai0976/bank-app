@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import validation from './Registervalidation';
 
 
 const Registration = () => {
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     id: "",
     password: "",
@@ -16,10 +18,10 @@ const Registration = () => {
     wage: ""
   })
 
+   const [registerStatus, setRegisterStatus] = useState("");
   
   function handleChange(e) {
     const newValue ={...values}
-    //setValues({ ...values, [e.target.name]: e.target.value });
     newValue[e.target.name] = e.target.value
     setValues(newValue)
     console.log(newValue)
@@ -30,12 +32,24 @@ const Registration = () => {
     //const array = Object.values(values); 
     try {
                
-               const response = await fetch("http://localhost:3001/api/register", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(values)
+      const response = await fetch("http://localhost:3001/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values)
                           
-    })
+      });
+
+
+      if (response.ok) {
+        console.log("Welcome to ConsensBank!");
+        setRegisterStatus("success");
+        // Perform any additional actions for successful login
+        navigate("/login");
+      } else {
+        console.log("Registration failed!");
+        setRegisterStatus("failed");
+        // Perform any additional actions for failed login
+      }
     } catch (err) {
       console.error(err.message);
     }
@@ -47,6 +61,10 @@ const Registration = () => {
   function formCheck(e) {
     e.preventDefault();
     setError(validation(values));
+
+    if (Object.keys(errors).length === 0 && (values.id !== "" && values.firstName !== "" && values.lastName !== "" && values.age !== "" && values.stradres !== "" && values.email !== "" && values.city !== "" && values.wage !== "" && values.password !== "")) {
+      submitRegistration(e);   // Call submitRegistration function when there are no errors
+    }
   }
 
 
@@ -83,8 +101,10 @@ const Registration = () => {
      <input id="userid" className="input-login-registration" placeholder="User ID" value={values.id} name="id" onChange={handleChange}/> <p />
          {errors.id && <p id="id-error" className="login-error-message">{errors.id}</p>} 
       <input id="password" className="input-login-registration" type="password" placeholder="Password" value={values.password} name="password" onChange={handleChange}/> <p />
-       {errors.password && <p id="id-password" className="login-error-message">{errors.password}</p>}   
-   <button className="registration-btn" onClick={submitRegistration} type={"submit"}>Send Registration Form</button>
+       {errors.password && <p id="id-password" className="login-error-message">{errors.password}</p>}
+       {registerStatus === "success" && <p>Registration successful!</p>}
+       {registerStatus === "failed" && <p>Registration failed!</p>}
+     <button className="registration-btn" type={"submit"}>Send Registration Form</button>
   </form>
   );
 }
