@@ -3,12 +3,13 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import validation from './Loginvalidation';
 
-const Login = () => {
+const Login = ({ handleLogin } ) => {
   const navigate = useNavigate();
   const [values, setValues] = useState({
     id: "",
     password: ""
   });
+  
   const [loginStatus, setLoginStatus] = useState("");
 
   function handleChange(e) {
@@ -27,13 +28,12 @@ const Login = () => {
         body: JSON.stringify(values)
       });
       
-      
-      
       if (response.ok) {
         console.log("Login successful!");
         setLoginStatus("success");
         // Perform any additional actions for successful login
          //return <Navigate to="./userinfo" />; // Redirect to the dashboard page
+         handleLogin(); // Update login state in the parent component
         navigate("/userInfo")
       } else {
         console.log("Login failed!");
