@@ -222,3 +222,11 @@
   color: #14579a;
   
 }
+
+.user-info-container{
+      width: 80%;
+      background-color: rgb(230, 230, 212);
+      margin: 5px;
+      border-radius: 3px;
+      border-style: groove;
+}

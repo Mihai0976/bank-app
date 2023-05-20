@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import validation from './Loginvalidation';
 
-const Login = ({ handleLogin } ) => {
+const Login = ({ handleLogin }  ) => {
   const navigate = useNavigate();
   const [values, setValues] = useState({
     id: "",
@@ -29,11 +29,15 @@ const Login = ({ handleLogin } ) => {
       });
       
       if (response.ok) {
+        const userData = await response.json();
         console.log("Login successful!");
         setLoginStatus("success");
         // Perform any additional actions for successful login
          //return <Navigate to="./userinfo" />; // Redirect to the dashboard page
-         handleLogin(); // Update login state in the parent component
+         // Save user data in sessionStorage
+        sessionStorage.setItem("userData", JSON.stringify(userData));
+        
+        handleLogin(userData); // Update login state in the parent component
         navigate("/userInfo")
       } else {
         console.log("Login failed!");

@@ -57,7 +57,7 @@ app.post("/api/login", async (req, res) => {
     const password = req.body.password;
     const passwordHashed = hash.MD5(password);
     console.log("Hashed Password:", passwordHashed); // Log the hashed password
-    const sqlLogin = "SELECT userid, password FROM user WHERE userid = ? AND password = ?";
+     const sqlLogin = "SELECT userid, firstName, lastName, email, streetaddress, country, city, wage FROM user WHERE userid = ? AND password = ?";
     const userLogin = await db.query(sqlLogin, [id, passwordHashed], (err, result) => {
       if (err) {
         console.error(err.message);
@@ -65,16 +65,18 @@ app.post("/api/login", async (req, res) => {
       } else {
         if (result.length !== 0) {
           console.log("Login successful!");
-          res.send(result);
+           const user = result[0];
+          //res.send(result);
+          res.status(200).json(user);
         } else {
           console.log("Login failed!");
-          res.json("Login Failed");
+           res.status(401).json("Invalid credentials");
         }
       }
     });
   } catch (error) {
     console.error(error.message);
-    res.json("Login Failed");
+     res.status(500).json("An error occurred while processing the login");
   }
 });
 
