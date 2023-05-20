@@ -35,7 +35,7 @@ function App() {
     const storedUserInfo = localStorage.getItem('userInfo');
     if (storedUserInfo) {
       setUserInfo(JSON.parse(storedUserInfo));
-      setIsLoggedIn(true);
+      setIsLoggedIn(false);
     }
   }, []);
 
