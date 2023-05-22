@@ -10,12 +10,12 @@ const Navbar = ({ isLoggedIn, handleLogout }) => {
 
   return (
     <nav className="navbar">
-      <Link to="/home">
+      <Link to="/">
         <h1>Consens</h1>
         <h1 className="h1Bank">Bank</h1>
       </Link>
       <ul>
-        <CustomLink to="/home">Home</CustomLink>
+        <CustomLink to="/">Home</CustomLink>
         <CustomLink to="/about">About</CustomLink>
         {isLoggedIn ? (
           <button onClick={handleLogoutClick}>Logout</button>

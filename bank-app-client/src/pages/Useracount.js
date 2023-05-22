@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Useracount = () => {
+const Useracount = ({ handleLogin, isLoggedIn }) => {
   const [userInfo, setUserInfo] = useState(null);
 
+  const navigate = useNavigate();
   useEffect(() => {
     // Access the user ID from sessionStorage
     const userId = JSON.parse(sessionStorage.getItem("userData")).userid;
@@ -14,6 +16,7 @@ const Useracount = () => {
         if (response.ok) {
           const userData = await response.json();
           setUserInfo(userData);
+          handleLogin(userData);
         } else {
           console.log("Failed to fetch user data");
         }
@@ -26,15 +29,20 @@ const Useracount = () => {
   }, []);
 
   return (
-    <div className="user-info-container">
-      <p>User info</p>
+    <div className="user-info-container"> 
       {userInfo && (
-        <div>
+        <div className="userInfo">
+           <button className="update-userInfo-button" onClick={() => navigate("/updateuserinfo")}>
+   {isLoggedIn && "Update your info"}
+</button>
+
+          <p>User info</p>
           <p>ID: {userInfo.userid}</p>
           <p>Name: {userInfo.firstName} {userInfo.lastName}</p>
           <p>Email: {userInfo.email}</p>
-          <p>Address: {userInfo.streetaddress}, {userInfo.city}, {userInfo.country}</p>
-          {/* Display other user information as needed */}
+          <p>Street Address: {userInfo.streetaddress} </p>
+          <p>City: {userInfo.city}</p>
+          <p>Country: {userInfo.country}</p>
         </div>
       )}
     </div>

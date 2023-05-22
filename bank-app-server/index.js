@@ -98,6 +98,26 @@ app.get("/api/user", (req, res) => {
 
 });
 
+app.get("/api/user/:userId", (req, res) => {
+  const userId = req.params.userId;
+  let sql = "SELECT * FROM user WHERE userid = ?";
+
+  db.query(sql, [userId], (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json("An error occurred while fetching user data");
+    } else {
+      if (result.length > 0) {
+        const userData = result[0];
+        res.json(userData);
+      } else {
+        res.status(404).json("User not found");
+      }
+    }
+  });
+});
+
+
 
 
 app.listen(3001, () => {
