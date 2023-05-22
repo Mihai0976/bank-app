@@ -63,7 +63,7 @@ const Updateuserinfo = () => {
     e.preventDefault();
     setError(validation(values));
 
-    if (Object.keys(errors).length === 0 && (values.id !== "" && values.firstName !== "" && values.lastName !== "" && values.age !== "" && values.stradres !== "" && values.email !== "" && values.city !== "" && values.wage !== "" && values.password !== "")) {
+    if (Object.keys(errors).length === 0 && (values.firstName !== "" && values.lastName !== "" && values.age !== "" && values.stradres !== "" && values.email !== "" && values.city !== "" && values.wage !== "")) {
       submitRegistration(e);   // Call submitRegistration function when there are no errors
     }
   }
@@ -71,7 +71,7 @@ const Updateuserinfo = () => {
 
 
   useEffect((e) => {
-    if (Object.keys(errors).length === 0 && (values.id !== "" && values.firstName !== "" && values.lastName !== "" && values.age !== "" && values.stradres !== "" && values.email !== "" && values.city !== "" && values.wage !== "" && values.password !== "")) {
+    if (Object.keys(errors).length === 0 && (values.id !== "" && values.firstName !== "" && values.lastName !== "" && values.age !== "" && values.stradres !== "" && values.email !== "" && values.city !== "" && values.wage !== "" )) {
       
     }
   })
@@ -99,13 +99,9 @@ const Updateuserinfo = () => {
      <input name="wage" id="wage" className="registration-form-input" placeholder="Monthly Income"
        onChange={handleChange} value={values.wage} /> <p />
      {errors.wage && <p className="registration-error-message" id="id-error">{errors.wage}</p>}
-     <input id="userid" className="input-login-registration" placeholder="User ID" value={values.id} name="id" onChange={handleChange}/> <p />
-         {errors.id && <p id="id-error" className="login-error-message">{errors.id}</p>} 
-      <input id="password" className="input-login-registration" type="password" placeholder="Password" value={values.password} name="password" onChange={handleChange}/> <p />
-       {errors.password && <p id="id-password" className="login-error-message">{errors.password}</p>}
        {registerStatus === "success" && <p>Update Info successful!</p>}
        {registerStatus === "failed" && <p>Update Info failed!</p>}
-     <button className="registration-btn" type={"submit"}>Send Update Info Form</button>
+     <button className="loan-btn" type={"submit"}>Send Update Info Form</button>
   </form>
   );
 }

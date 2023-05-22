@@ -235,7 +235,7 @@
   width: 25%;
   text-align: start;
   margin-top: 3%;
-  height: 85%;
+  height: 95%;
   background-color: rgb(196, 196, 177);
   padding-left:5px;
 }
@@ -245,4 +245,62 @@
   border-style: none;
   margin-top: 0;
   margin-bottom: 10px;
+  font-size: 15px;
+  height: 25px;
+  
+}
+
+.update-userInfo-button:hover{
+  color: white;
+  background-color: rgb(26, 130, 165);
+
+}
+
+.loan-form{
+  margin-top: 3%;
+  width: 500px;
+  background-color: rgb(223, 229, 234);
+  text-align: center;
+  border-radius: 3px;
+  padding-top: 2%;
+  height: 95%;
+}
+
+.user-info-wrapper {
+  display: flex;
+  height: 85%;
+}
+
+.loan-form-input {
+  height: 35px;
+  width: 60%;
+  background-color: rgb(230, 230, 212);
+  margin: 5px;
+  border-radius: 1px;
+  border-style: groove;
+
+}
+
+.loan-form-checkbox-container {
+  margin-top: 10px;
+}
+
+.loan-form-checkbox {
+  margin-right: 5px;
+}
+.loan-btn {
+  margin-top: 5px;
+  border-radius: 4px;
+  border-style: none;
+  background-color: rgb(15, 169, 221);
+  color: rgb(0, 0, 139);
+  height: 25px;
+  font-weight: 535;
+  width: 120px;
+  text-align: center;
+}
+
+.loan-btn:hover{
+  color: white;
+    background-color: rgb(26, 130, 165);
 }

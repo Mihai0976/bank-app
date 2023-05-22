@@ -31,18 +31,29 @@ const Useracount = ({ handleLogin, isLoggedIn }) => {
   return (
     <div className="user-info-container"> 
       {userInfo && (
-        <div className="userInfo">
-           <button className="update-userInfo-button" onClick={() => navigate("/updateuserinfo")}>
-   {isLoggedIn && "Update your info"}
-</button>
-
-          <p>User info</p>
-          <p>ID: {userInfo.userid}</p>
-          <p>Name: {userInfo.firstName} {userInfo.lastName}</p>
-          <p>Email: {userInfo.email}</p>
-          <p>Street Address: {userInfo.streetaddress} </p>
-          <p>City: {userInfo.city}</p>
-          <p>Country: {userInfo.country}</p>
+        <div className="user-info-wrapper">
+          <div className="userInfo">
+            <button className="update-userInfo-button" onClick={() => navigate("/updateuserinfo")}>{isLoggedIn && "Update your info"}</button>
+            <p>User info</p>
+            <p>ID: {userInfo.userid}</p>
+            <p>Name: {userInfo.firstName} {userInfo.lastName}</p>
+            <p>Email: {userInfo.email}</p>
+            <p>Street Address: {userInfo.streetaddress} </p>
+            <p>City: {userInfo.city}</p>
+            <p>Country: {userInfo.country}</p>
+          </div>
+          <div className="loan-form">
+            <form action="">
+              <h3>Loan Application</h3>
+              <input className="loan-form-input" type="text" placeholder="Ammount" />
+              <input className="loan-form-input" type="text" placeholder="Period" />
+               <div className="loan-form-checkbox-container">
+                <input className="loan-form-checkbox" type="checkbox" id="termsCheckbox" />
+                <label htmlFor="termsCheckbox">I agree to the terms and conditions</label>
+              </div>
+              <button className="loan-btn">Aply For Looan</button>
+            </form>
+          </div>
         </div>
       )}
     </div>
@@ -50,3 +61,4 @@ const Useracount = ({ handleLogin, isLoggedIn }) => {
 };
 
 export default Useracount;
+
