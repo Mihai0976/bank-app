@@ -3,30 +3,40 @@ import { useNavigate } from "react-router-dom";
 
 const Useracount = ({ handleLogin, isLoggedIn }) => {
   const [userInfo, setUserInfo] = useState(null);
-
   const navigate = useNavigate();
+
   useEffect(() => {
-    // Access the user ID from sessionStorage
-    const userId = JSON.parse(sessionStorage.getItem("userData")).userid;
-
-    // Fetch user data from the server based on the ID
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch(`http://localhost:3001/api/user/${userId}`);
-        if (response.ok) {
-          const userData = await response.json();
-          setUserInfo(userData);
-          handleLogin(userData);
-        } else {
-          console.log("Failed to fetch user data");
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchUserData();
+    const storedUserInfo = JSON.parse(localStorage.getItem("userInfo"));
+    if (storedUserInfo) {
+      setUserInfo(storedUserInfo);
+    }
   }, []);
+
+  const fetchUserData = async () => {
+    try {
+      const userId = userInfo.userid;
+      const response = await fetch(`http://localhost:3001/api/user/${userId}`);
+      if (response.ok) {
+        const userData = await response.json();
+        setUserInfo(userData);
+        handleLogin(userData);
+      } else {
+        console.log("Failed to fetch user data");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    if (isLoggedIn && userInfo) {
+      fetchUserData();
+    }
+  }, [isLoggedIn, userInfo]);
+
+  const handleUpdateUserInfo = () => {
+    navigate("/updateuserinfo");
+  };
 
   return (
     <div className="user-info-container"> 

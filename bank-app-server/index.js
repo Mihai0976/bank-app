@@ -117,6 +117,29 @@ app.get("/api/user/:userId", (req, res) => {
   });
 });
 
+app.post("/api/update/:userId", async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const { firstName, lastName, email, streetaddress, city, country, wage } = req.body;
+
+    const sqlUpdate = "UPDATE user SET firstName = ?, lastName = ?, email = ?, streetaddress = ?, country = ?, city = ?, wage = ? WHERE userId = ?";
+
+    db.query(sqlUpdate, [firstName, lastName, email, streetaddress, country, city, wage, userId], (err, result) => {
+      if (err) {
+        console.error(err.stack);
+        return res.status(500).json({ error: "An error occurred", message: err.message });
+      } else {
+        console.log(result);
+        return res.status(200).json("Update successful");
+      }
+    });
+  } catch (error) {
+    console.error(error.message);
+    return res.status(500).json("An error occurred while processing the request");
+  }
+});
+
+
 
 
 

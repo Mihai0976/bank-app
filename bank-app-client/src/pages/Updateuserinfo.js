@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import validation from './Registervalidation';
-
 
 const Updateuserinfo = () => {
   const navigate = useNavigate();
@@ -16,67 +15,59 @@ const Updateuserinfo = () => {
     country: "",
     city: "",
     wage: ""
-  })
+  });
 
-   const [registerStatus, setRegisterStatus] = useState("");
-  
+  const [registerStatus, setRegisterStatus] = useState("");
+ const [errors, setError] = useState({});
+ 
+
   function handleChange(e) {
-    const newValue ={...values}
-    newValue[e.target.name] = e.target.value
-    setValues(newValue)
-    console.log(newValue)
+    const newValue = { ...values };
+    newValue[e.target.name] = e.target.value;
+    setValues(newValue);
   }
+
   const userId = JSON.parse(sessionStorage.getItem("userData")).userid;
-  const submitRegistration = async e => {
-     e.preventDefault();
-    //const array = Object.values(values); 
-    
+  const submitRegistration = async (e) => {
+    e.preventDefault();
+
     try {
-               
-      const response = await fetch(`http://localhost:3001/api/updade/${userId}`, {
+      const response = await fetch(`http://localhost:3001/api/update/${userId}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values)
-                          
       });
-
 
       if (response.ok) {
         console.log("User Info updated!");
         setRegisterStatus("success");
-        // Perform any additional actions for successful login
-        navigate("/login");
+        navigate("/userInfo");
       } else {
         console.log("User info update failed!");
         setRegisterStatus("failed");
-        // Perform any additional actions for failed login
       }
     } catch (err) {
       console.error(err.message);
     }
-  
-  }
-  
-  const [errors, setError] = useState({})  
+  };
 
   function formCheck(e) {
     e.preventDefault();
     setError(validation(values));
 
-    if (Object.keys(errors).length === 0 && (values.firstName !== "" && values.lastName !== "" && values.age !== "" && values.stradres !== "" && values.email !== "" && values.city !== "" && values.wage !== "")) {
-      submitRegistration(e);   // Call submitRegistration function when there are no errors
+    if (
+      Object.keys(errors).length === 0 &&
+      values.firstName !== "" &&
+      values.lastName !== "" &&
+      values.age !== "" &&
+      values.streetaddress !== "" &&
+      values.email !== "" &&
+      values.city !== "" &&
+      values.wage !== ""
+    ) {
+      submitRegistration(e);
     }
   }
-
-
-
-  useEffect((e) => {
-    if (Object.keys(errors).length === 0 && (values.id !== "" && values.firstName !== "" && values.lastName !== "" && values.age !== "" && values.stradres !== "" && values.email !== "" && values.city !== "" && values.wage !== "" )) {
-      
-    }
-  })
-
-   
 
  return ( 
   <form onSubmit={formCheck} formMethod="POST" className="registration-form" >
@@ -101,7 +92,7 @@ const Updateuserinfo = () => {
      {errors.wage && <p className="registration-error-message" id="id-error">{errors.wage}</p>}
        {registerStatus === "success" && <p>Update Info successful!</p>}
        {registerStatus === "failed" && <p>Update Info failed!</p>}
-     <button className="loan-btn" type={"submit"}>Send Update Info Form</button>
+     <button className="update-btn" type={"submit"}>Send Update Info Form</button>
   </form>
   );
 }

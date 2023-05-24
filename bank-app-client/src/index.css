@@ -304,3 +304,20 @@
   color: white;
   background-color: rgb(26, 130, 165);
 }
+
+.update-btn {
+  margin-top: 5px;
+  border-radius: 4px;
+  border-style: none;
+  background-color: rgb(15, 169, 221);
+  color: rgb(0, 0, 139);
+  height: 25px;
+  font-weight: 535;
+  width: 140px;
+  text-align: center;
+}
+
+.update-btn:hover {
+  color: white;
+  background-color: rgb(26, 130, 165);
+}
