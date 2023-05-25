@@ -140,6 +140,24 @@ app.post("/api/update/:userId", async (req, res) => {
 });
 
 
+app.delete("/api/user/delete/:userId", (req, res) => {
+  const userId = req.params.userId;
+  const sqlDeleteUser = "DELETE FROM user WHERE userId = ?";
+  db.query(sqlDeleteUser, [userId], (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json("An error occurred while trying to delete user!");
+    } else {
+      if (result.affectedRows > 0) {
+        res.json("User deleted successfully");
+      } else {
+        res.status(404).json("User not found");
+      }
+    }
+  });
+});
+
+
 
 
 

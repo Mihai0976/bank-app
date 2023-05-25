@@ -10,30 +10,21 @@ import React, { useState, useEffect } from 'react';
 import Updateuserinfo from './pages/Updateuserinfo';
 
 function App() {
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-   const [userInfo, setUserInfo] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
 
   const handleLogin = (userData) => {
-    // Perform login authentication here
-    // If login is successful, update isLoggedIn to true
-    setIsLoggedIn(true);
-     // Store user information in local storage
     setUserInfo(userData);
-  localStorage.setItem('userInfo', JSON.stringify(userInfo));
+    localStorage.setItem('userInfo', JSON.stringify(userInfo));
+    setIsLoggedIn(true);
   };
 
   const handleLogout = () => {
-    // Perform logout logic here
-    // Update isLoggedIn to false
     setIsLoggedIn(false);
-     // Remove user information from local storage
-  sessionStorage.removeItem('userData');
-
+    sessionStorage.removeItem('userData');
   };
 
-    useEffect(() => {
-    // Check if user information exists in local storage
+  useEffect(() => {
     const storedUserInfo = localStorage.getItem('userInfo');
     if (storedUserInfo) {
       setUserInfo(JSON.parse(storedUserInfo));
@@ -42,25 +33,22 @@ function App() {
   }, []);
 
   return (
-    
     <>
-      <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} userInfo={userInfo}/>
+      <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} userInfo={userInfo} />
       <div className='container'>
-         <Routes>
+        <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/login" element={<Login handleLogin={handleLogin}/>} />
+          <Route path="/login" element={<Login handleLogin={handleLogin} />} />
           <Route path='/newUser' element={<Registration />} />
-          <Route path='/userInfo' element={<Useracount isLoggedIn={isLoggedIn} handleLogin={handleLogin} />} />
-           <Route path='/updateuserinfo' element={<Updateuserinfo />} />
+          <Route path='/userInfo' element={<Useracount isLoggedIn={isLoggedIn} handleLogin={handleLogin} handleLogout={handleLogout}/>} />
+          <Route path='/updateuserinfo' element={<Updateuserinfo />} />
         </Routes>
       </div>
       <div className='footer'>
         <Footer />
-     </div>
-      
+      </div>
     </>
-     
   );
 }
 

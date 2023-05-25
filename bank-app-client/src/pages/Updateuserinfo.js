@@ -41,6 +41,7 @@ const Updateuserinfo = () => {
       if (response.ok) {
         console.log("User Info updated!");
         setRegisterStatus("success");
+        alert("You have updated your account information succesfully!")
         navigate("/userInfo");
       } else {
         console.log("User info update failed!");

@@ -4,6 +4,7 @@ const Navbar = ({ isLoggedIn, handleLogout }) => {
   const navigate = useNavigate(); // Add this line to import the navigate function
 
   const handleLogoutClick = () => {
+    
     handleLogout();
     navigate("/login"); // Redirect to the login page
   };

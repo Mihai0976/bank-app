@@ -43,6 +43,7 @@ const Registration = () => {
       if (response.ok) {
         console.log("Welcome to ConsensBank!");
         setRegisterStatus("success");
+        alert("Welcome to ConsenBank! You have successfully created your account!")
         // Perform any additional actions for successful login
         navigate("/login");
       } else {

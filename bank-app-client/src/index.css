@@ -247,6 +247,7 @@
   margin-bottom: 10px;
   font-size: 15px;
   height: 25px;
+  margin-right: 4px;
   
 }
 
@@ -315,6 +316,8 @@
   font-weight: 535;
   width: 140px;
   text-align: center;
+  
+  
 }
 
 .update-btn:hover {
