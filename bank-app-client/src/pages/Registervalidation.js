@@ -1,5 +1,6 @@
 const Registrationvalitation = (values) => {
  let errors = {}
+ 
 
 if (!values.firstName) {
  errors.firstName = "First Name required!";
