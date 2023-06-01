@@ -189,15 +189,15 @@ app.get('/api/loandata/:userId', (req, res) => {
 app.post('/api/update/:userId', async (req, res) => {
   try {
     const userId = req.params.userId;
-    const { firstName, lastName, email, streetaddress, city, country, wage } =
+    const { email, streetaddress, city, wage } =
       req.body;
 
     const sqlUpdate =
-      'UPDATE user SET firstName = ?, lastName = ?, email = ?, streetaddress = ?, country = ?, city = ?, wage = ? WHERE userId = ?';
+      'UPDATE user SET  email = ?, streetaddress = ?, city = ?, wage = ? WHERE userId = ?';
 
     db.query(
       sqlUpdate,
-      [firstName, lastName, email, streetaddress, country, city, wage, userId],
+      [email, streetaddress, city, wage, userId],
       (err, result) => {
         if (err) {
           console.error(err.stack);

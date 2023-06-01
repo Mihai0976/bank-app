@@ -324,3 +324,79 @@
   color: white;
   background-color: rgb(26, 130, 165);
 }
+
+.home-background{
+  background-color: aliceblue;
+  width: 80%;
+  height: 90%;
+  background-repeat: no-repeat;
+  display: flex;
+  text-align: center;
+  margin-top: 2%;
+  border-radius: 5px;
+}
+
+.home-right{
+  width: 20%;
+  height: 90%;
+  background-color:gainsboro;
+  margin-top: 2%;
+  margin-left: 2%;
+  border-radius: 5px;
+}
+
+.paragraf-right{
+  background-color: aliceblue;
+  height: 30px;
+  width: 90%;
+  margin:10px;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.paragraf-right-bottom {
+  background-color: aliceblue;
+  height: 400px;
+  width: 90%;
+  margin: 10px;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.home-midle {
+  width: 58%;
+  height: 73%;
+  background-color: gainsboro;
+  margin-top: 2%;
+  margin-left: 2%;
+  border-radius: 5px;
+  background-image: url(../public/image/bankhome.jpg);
+  background-repeat: no-repeat;
+  margin: 30px;
+  display: flex;
+
+}
+
+
+
+.home-left {
+  width: 12%;
+  height: 90%;
+  background-color: gainsboro;
+  margin-top: 2%;
+  margin-left: 2%;
+  border-radius: 5px;
+}
+
+.back-pile {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-image: url(../public/image/reshot-icon-arrow-left-circle-CQ7KNXYF43.svg);
+  background-size: cover;
+  display: flex;
+  background-color: rgb(15, 169, 221);
+  border-radius: 50%;
+  margin: 4px;
+}
+

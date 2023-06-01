@@ -58,9 +58,6 @@ const Updateuserinfo = () => {
 
     if (
       Object.keys(errors).length === 0 &&
-      values.firstName !== "" &&
-      values.lastName !== "" &&
-      values.age !== "" &&
       values.streetaddress !== "" &&
       values.email !== "" &&
       values.city !== "" &&
@@ -71,23 +68,16 @@ const Updateuserinfo = () => {
   }
 
  return ( 
-  <form onSubmit={formCheck} formMethod="POST" className="registration-form" >
+   <form onSubmit={formCheck} formMethod="POST" className="registration-form" >
+    <button className="back-pile" onClick={() => navigate("/userInfo")}></button>
+
    <h3 style={{paddingBottom: "7px"}}>Registration Form</h3>
-     <input id="firstName" className="registration-form-input" placeholder="First Name" value={values.firstName} name="firstName" onChange={handleChange} /> <p />
-     {errors.firstName && <p className="registration-error-message" id="id-error">{errors.firstName}</p>}
-    <input id="lastName" className="registration-form-input" placeholder="Last Name" value={values.lastName} name="lastName" onChange={handleChange} /> <p />
-     {errors.lastName && <p className="registration-error-message" id="id-error">{errors.lastName}</p>}
-     <input id="age" name="age" value={values.age} onChange={handleChange} className="registration-form-input" placeholder="Age" />
-     {errors.age && <p className="registration-error-message"  id="id-error">{errors.age}</p>}
      <input id="stradress" name="streetaddress" className="registration-form-input" placeholder="Street Address"  onChange={handleChange} value={values.streetaddress} />
-     {errors.stradress && <p className="registration-error-message"  id="id-error">{errors.stradress}</p>}
+     {errors.streetaddress && <p className="registration-error-message"  id="id-error">{errors.streetaddress}</p>}
      <input name="email" id="email" className="registration-form-input" placeholder="E-mail" onChange={handleChange} value={values.email} />
      {errors.email && <p className="registration-error-message"  id="id-error">{errors.email}</p>}
      <input name="city" id="city" className="registration-form-input" placeholder="City" onChange={handleChange} value={values.city} />
      {errors.city && <p className="registration-error-message"  id="id-error">{errors.city}</p>}
-     <input name="country" id="country" className="registration-form-input" placeholder="Country"
-       onChange={handleChange} value={values.country} /> 
-     {errors.country && <p className="registration-error-message"  id="id-error">{errors.country}</p>}
      <input name="wage" id="wage" className="registration-form-input" placeholder="Monthly Income"
        onChange={handleChange} value={values.wage} /> <p />
      {errors.wage && <p className="registration-error-message" id="id-error">{errors.wage}</p>}
